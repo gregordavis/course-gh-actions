@@ -1,13 +1,12 @@
 # This is a basic workflow to help you get started with Actions
-
 name: test
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-  schedule:
-    - cron: "*/1 * * * *"
+ schedule:
+    - cron: '*/2 * * * *' # Runs every 2 minutes 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
