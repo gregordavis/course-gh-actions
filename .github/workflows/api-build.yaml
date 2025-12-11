@@ -1,0 +1,20 @@
+name: api-build
+on:
+  push:
+    paths:
+        - ".github/workflows/api-build.yaml"
+        - "api/**"
+
+  workflow_dispatch: #manual trigger button
+
+jobs:
+  build:
+    name: build-dotnet-api
+    runs-on: ubuntu-latest
+    steps:
+       - uses: actions/checkout@v4
+       - run: dotnet --list-sdks
+       - run: dotnet --list- runtimes
+       - run: dotnet build
+         working-directory: ./api
+
