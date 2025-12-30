@@ -1,0 +1,17 @@
+# Example: Controlled action updates with testing
+name: Update Dependencies
+on:
+  schedule:
+    - cron: "0 2 * * 1" # Weekly on Monday at 2 AM
+
+jobs:
+  update-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for action updates
+        uses: actions/setup-node@v4
+      - name: Test with new versions
+        run: npm test
+      - name: Create update PR
+        if: success()
+        uses: peter-evans/create-pull-request@v5
